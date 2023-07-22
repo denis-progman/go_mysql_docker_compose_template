@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  app:
+    container_name: go-app
+    build:
+      context: .
+      dockerfile: docker/go/Dockerfile
+    ports: 
+      - '8000:80'
+    volumes:
+      - "./app/:/usr/src/app"
+    networks:
+      - appgonet
+
+  mysqlgo:
+    env_file:
+    - ./.env
+    container_name: mysql-go-db
+    image: mysql:latest
+    volumes:
+      - "./storage/mysql-db:/var/lib/mysql"
+    networks:
+      - appgonet
+
+networks:
+  appgonet:
