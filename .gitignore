@@ -4,4 +4,4 @@
 .terraform
 .DS_Store
 app/*
-storages/mysql-db/*
+storage/mysql-db/*
